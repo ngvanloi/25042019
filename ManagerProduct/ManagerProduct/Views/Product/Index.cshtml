@@ -1,0 +1,46 @@
+﻿@model IEnumerable<ManagerProduct.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<h4>ViewBag.Message</h4>
+<p>
+    @Html.ActionLink("Create New", "Create")
+    <a href="@Url.Action("Create","Product")">Them moi</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Tên Sản Phẩm
+        </th>
+        <th>
+            Giá
+        </th>
+        <th>
+            Hạn Sử Dụng
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @item.name
+        </td>
+        <td>
+            @item.price
+            @*@item.price.ToString("N0")*@
+        </td>
+        <td>
+            @item.expire.Value.ToString("dd/MM/yyyy")
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) 
+            <a href="@Url.Action("Edit", "Product", new { id = item.id})">Sua</ahred>
+        </td>
+    </tr>
+}
+
+</table>
